@@ -7,7 +7,7 @@
 #define speedBForward 240
 
 //turn time
-#define TURN_TIME 500
+#define TURN_TIME 900
 
 // Motor A pins
 int mA1 = 10;
@@ -61,14 +61,14 @@ void turnLeft() {
   analogWrite(mB1, 0);
   analogWrite(mB2, speedBForward); //adjustment for one motor being weaker than the other
 
-  delay(TURN_TIME); //also adjustment for that
+  delay(TURN_TIME / 2); //also adjustment for that
 }
 
 void turnRight() {
   analogWrite(mA1, speedAForward);
   analogWrite(mA2, 0);
 
-  analogWrite(mB1, speedBForward);
+  analogWrite(mB1, speedBForward / 2);
   analogWrite(mB2, 0);
 
   delay(TURN_TIME);
@@ -101,24 +101,25 @@ void loop() {
       delay (100);
       
       turnLeft();
+      delay(600);
       
       moveForward();
-      delay(900); 
+      delay(600); 
 
       turnRight();
+      delay(600);
 
       moveForward();
-      delay(900); 
+      delay(200); 
       
       turnRight();
+      delay(600);
 
       moveForward();
-      delay(200);
+      delay(300);
 
       turnLeft();
-
-      moveForward();
-      delay(500);
+      delay(700);
     } 
     else {
       moveForward();
